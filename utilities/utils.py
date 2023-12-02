@@ -1,14 +1,24 @@
-from random import randint
+import random
+import time
 
+# Generates random array of specified size with values within given number range
 def generate_random_arrays(array_size, number_range):
     MIN_VALUE, MAX_VALUE = number_range
 
     random_array = []
 
     for i in range(array_size):
-        random_array.append(randint(MIN_VALUE, MAX_VALUE))
+        random_array.append(random.randint(MIN_VALUE, MAX_VALUE))
     
     return random_array
+
+# Times a given algorithm and returns the algorithm result and its execution time
+def time_algorithm(func, *args, **kwargs):
+    start_time = time.time()
+    result = func(*args, **kwargs)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return result, execution_time
 
 def merge(left_subarray, right_subarray):
     
