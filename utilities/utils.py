@@ -20,6 +20,7 @@ def time_algorithm(func, *args, **kwargs):
     execution_time = end_time - start_time
     return result, execution_time
 
+# Merges two subarrays together, appending values by which is smaller, first
 def merge(left_subarray, right_subarray):
     
     # Empty merged array to hold final sorted array

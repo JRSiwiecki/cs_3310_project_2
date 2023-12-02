@@ -12,7 +12,7 @@ random_array = utilities.utils.generate_random_array(array_length, [min_value, m
 # Number of times to test each algorithm with each random array
 iterations = 5
 
-# Test kth_smallest_merge_sort for k = 0
+# Test for k = 0
 k = 0
 
 # Switch to true to see intermediary unsorted -> sorted arrays
@@ -20,6 +20,7 @@ display_output = False
 
 set_results = {"array_length": array_length, "results": []}
 
+# List of algorithms to test
 algorithm_list = [
     algorithms.merge_sort.kth_smallest_merge_sort
 ]
@@ -29,7 +30,7 @@ for algorithm in algorithm_list:
     print(f"----- {algorithm.__name__.upper()} for array_length = {array_length}, k = {k}  -----")
 
     if display_output:
-        # Display the given array
+        # Display the unsorted array
         print("Given Array:", random_array)
     
     execution_times = []

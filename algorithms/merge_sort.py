@@ -1,5 +1,6 @@
 from utilities.utils import merge
 
+# Returns kth_smallest value in inputt array (which is just the kth index)
 def kth_smallest_merge_sort(k, array):
     # Sort array first
     sorted_array = merge_sort(array)
@@ -8,6 +9,7 @@ def kth_smallest_merge_sort(k, array):
     return sorted_array[k], sorted_array
 
 
+# Uses recursive merge sort to sort input array
 def merge_sort(array):
     # Find midpoint/splitpoint
     midpoint = len(array) // 2
