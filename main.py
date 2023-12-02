@@ -1,10 +1,50 @@
-from algorithms.merge_sort import kth_smallest_merge_sort
+import algorithms.merge_sort
+import utilities.utils
 
-k = 1
-array = [4, 3, 6, 1, 9, 10, 2, 5]
+# Parameters for random array generation
+array_length = 1000
+min_value = 0
+max_value = 100
 
-print(array)
+# Generate a random array
+random_array = utilities.utils.generate_random_array(array_length, [min_value, max_value])
 
-array = kth_smallest_merge_sort(k, array)
+# Number of times to test each algorithm with each random array
+iterations = 5
 
-print(array)
+# Test kth_smallest_merge_sort for k = 0
+k = 0
+
+# Switch to true to see intermediary unsorted -> sorted arrays
+display_output = False
+
+set_results = {"array_length": array_length, "results": []}
+
+algorithm_list = [
+    algorithms.merge_sort.kth_smallest_merge_sort
+]
+
+# Test each algorithm on a given number of iterations while tracking time for execution
+for algorithm in algorithm_list:
+    print(f"----- {algorithm.__name__.upper()} for array_length = {array_length}, k = {k}  -----")
+
+    if display_output:
+        # Display the given array
+        print("Given Array:", random_array)
+    
+    execution_times = []
+
+    for _ in range(iterations):
+        _, execution_time = utilities.utils.time_algorithm(algorithm, k, random_array)
+        execution_times.append(execution_time)
+
+        if display_output:
+            # Display the sorted array
+            sorted_result, _ = utilities.utils.time_algorithm(algorithm, k, random_array)
+            print("Sorted Array:", sorted_result)
+
+    avg_execution_time = sum(execution_times) / iterations
+    set_results["results"].append({"algorithm": algorithm.__name__, 
+                                   "avg_execution_time": avg_execution_time})
+    print(f"Average Execution Time: {avg_execution_time:.6f} seconds")
+    print("-------------------------------------------\n")
