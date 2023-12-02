@@ -5,7 +5,7 @@ import utilities.utils
 
 # Parameters for random array generation
 # ARRAY_LENGTH is being tested for 2^n until we reach some hardware limit
-ARRAY_LENGTH = 8096
+ARRAY_LENGTH = 33554432
 MIN_VALUE = 0
 MAX_VALUE = ARRAY_LENGTH * 2
 
@@ -13,7 +13,7 @@ MAX_VALUE = ARRAY_LENGTH * 2
 random_array = utilities.utils.generate_random_array(ARRAY_LENGTH, [MIN_VALUE, MAX_VALUE])
 
 # Number of times to test each algorithm with each random array
-ITERATIONS = 5
+ITERATIONS = 10
 
 # Test for k
 K = ARRAY_LENGTH // 2
@@ -51,7 +51,7 @@ for algorithm in algorithm_list:
         if display_output:
             # Display the sorted array
             sorted_result, _ = utilities.utils.time_algorithm(algorithm, random_array.copy(), K)
-            print("Sorted Array:", sorted_result)
+            print("Kth ({K}) Smallest Element:", sorted_result)
 
     avg_execution_time = sum(execution_times) / ITERATIONS
     set_results["results"].append({"algorithm": algorithm.__name__, 
