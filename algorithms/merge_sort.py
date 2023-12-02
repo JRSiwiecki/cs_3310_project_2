@@ -5,7 +5,7 @@ def kth_smallest_merge_sort(k, array):
     sorted_array = merge_sort(array)
 
     # Return number at index k
-    return sorted_array[k]
+    return sorted_array[k], sorted_array
 
 
 def merge_sort(array):
