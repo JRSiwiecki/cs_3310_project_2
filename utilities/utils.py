@@ -1,3 +1,15 @@
+from random import randint
+
+def generate_random_arrays(array_size, number_range):
+    MIN_VALUE, MAX_VALUE = number_range
+
+    random_array = []
+
+    for i in range(array_size):
+        random_array.append(randint(MIN_VALUE, MAX_VALUE))
+    
+    return random_array
+
 def merge(left_subarray, right_subarray):
     
     # Empty merged array to hold final sorted array
