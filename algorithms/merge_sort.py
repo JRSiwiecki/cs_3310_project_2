@@ -1,13 +1,4 @@
-from utilities.utils import merge
-
-# Returns kth_smallest value in inputt array (which is just the kth index)
-def kth_smallest_merge_sort(k, array):
-    # Sort array first
-    sorted_array = merge_sort(array)
-
-    # Return number at index k
-    return sorted_array[k], sorted_array
-
+import utilities.utils
 
 # Uses recursive merge sort to sort input array
 def merge_sort(array):
@@ -25,4 +16,4 @@ def merge_sort(array):
         right_subarray = merge_sort(right_subarray)
     
     # Merge sorted subarrays
-    return merge(left_subarray, right_subarray)
+    return utilities.utils.merge(left_subarray, right_subarray)
