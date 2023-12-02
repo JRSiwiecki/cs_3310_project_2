@@ -2,7 +2,7 @@ import random
 import time
 
 # Generates random array of specified size with values within given number range
-def generate_random_arrays(array_size, number_range):
+def generate_random_array(array_size, number_range):
     MIN_VALUE, MAX_VALUE = number_range
 
     random_array = []
