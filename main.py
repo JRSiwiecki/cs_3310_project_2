@@ -3,9 +3,10 @@ import algorithms.quick_sort_standard
 import utilities.utils
 
 # Parameters for random array generation
-ARRAY_LENGTH = 10
+# ARRAY_LENGTH is being tested for 2^n until we reach some hardware limit
+ARRAY_LENGTH = 8192
 MIN_VALUE = 0
-MAX_VALUE = ARRAY_LENGTH + 1
+MAX_VALUE = ARRAY_LENGTH * 2
 
 # Generate a random array
 random_array = utilities.utils.generate_random_array(ARRAY_LENGTH, [MIN_VALUE, MAX_VALUE])
@@ -14,10 +15,10 @@ random_array = utilities.utils.generate_random_array(ARRAY_LENGTH, [MIN_VALUE, M
 ITERATIONS = 5
 
 # Test for k
-K = 5
+K = ARRAY_LENGTH // 2
 
 # Switch to true to see intermediary unsorted -> sorted arrays
-display_output = True
+display_output = False
 
 set_results = {"array_length": ARRAY_LENGTH, "results": []}
 
@@ -34,6 +35,10 @@ for algorithm in algorithm_list:
     if display_output:
         # Display the unsorted array
         print("Given Array:", random_array)
+        
+        # Use throwaway array to not sort a given array
+        throwaway_array = random_array.copy()
+        print("Sorted Array:", sorted(throwaway_array))
     
     execution_times = []
 
