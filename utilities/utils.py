@@ -1,14 +1,6 @@
 import random
 import time
 
-# Returns kth_smallest value in input array (which is just the kth index)
-def kth_smallest_element(algorithm, array, k):
-    # Sort array first using given algorithm
-    sorted_array = algorithm(array)
-
-    # Return number at index k
-    return sorted_array[k], sorted_array
-
 # Generates random array of specified size with values within given number range
 def generate_random_array(array_size, number_range):
     MIN_VALUE, MAX_VALUE = number_range
