@@ -12,7 +12,7 @@ random_array = utilities.utils.generate_random_array(array_length, [min_value, m
 # Number of times to test each algorithm with each random array
 iterations = 5
 
-# Test for k = 0
+# Test for k
 k = 0
 
 # Switch to true to see intermediary unsorted -> sorted arrays
@@ -22,7 +22,7 @@ set_results = {"array_length": array_length, "results": []}
 
 # List of algorithms to test
 algorithm_list = [
-    algorithms.merge_sort.kth_smallest_merge_sort
+    algorithms.merge_sort.merge_sort
 ]
 
 # Test each algorithm on a given number of iterations while tracking time for execution
@@ -36,12 +36,14 @@ for algorithm in algorithm_list:
     execution_times = []
 
     for _ in range(iterations):
-        _, execution_time = utilities.utils.time_algorithm(algorithm, k, random_array)
+        _, execution_time = utilities.utils.time_algorithm(utilities.utils.kth_smallest_element, 
+                                                           algorithm, random_array, k)
         execution_times.append(execution_time)
 
         if display_output:
             # Display the sorted array
-            sorted_result, _ = utilities.utils.time_algorithm(algorithm, k, random_array)
+            sorted_result, _ = utilities.utils.time_algorithm(utilities.utils.kth_smallest_element, 
+                                                              algorithm, random_array, k)
             print("Sorted Array:", sorted_result)
 
     avg_execution_time = sum(execution_times) / iterations
