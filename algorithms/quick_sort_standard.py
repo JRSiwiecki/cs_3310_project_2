@@ -1,5 +1,6 @@
 import utilities.utils
 
+# Returns kth_smallest value in input array (which is just the kth index) using quick sort partioning
 def kth_smallest_quick_sort(array, k):
     # Uses standard quick sort to sort input array
     def quick_sort_standard(array, low, high, k):
