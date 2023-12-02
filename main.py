@@ -1,10 +1,11 @@
 import algorithms.merge_sort
 import algorithms.quick_sort_standard
+import algorithms.quick_sort_medians
 import utilities.utils
 
 # Parameters for random array generation
 # ARRAY_LENGTH is being tested for 2^n until we reach some hardware limit
-ARRAY_LENGTH = 8192
+ARRAY_LENGTH = 8096
 MIN_VALUE = 0
 MAX_VALUE = ARRAY_LENGTH * 2
 
@@ -25,7 +26,8 @@ set_results = {"array_length": ARRAY_LENGTH, "results": []}
 # List of algorithms to test
 algorithm_list = [
     algorithms.merge_sort.kth_smallest_merge_sort,
-    algorithms.quick_sort_standard.kth_smallest_quick_sort
+    algorithms.quick_sort_standard.kth_smallest_quick_sort,
+    algorithms.quick_sort_medians.kth_smallest_median_of_medians
 ]
 
 # Test each algorithm on a given number of iterations while tracking time for execution
@@ -43,12 +45,12 @@ for algorithm in algorithm_list:
     execution_times = []
 
     for _ in range(ITERATIONS):   
-        _, execution_time = utilities.utils.time_algorithm(algorithm, random_array, K)
+        _, execution_time = utilities.utils.time_algorithm(algorithm, random_array.copy(), K)
         execution_times.append(execution_time)
 
         if display_output:
             # Display the sorted array
-            sorted_result, _ = utilities.utils.time_algorithm(algorithm, random_array, K)
+            sorted_result, _ = utilities.utils.time_algorithm(algorithm, random_array.copy(), K)
             print("Sorted Array:", sorted_result)
 
     avg_execution_time = sum(execution_times) / ITERATIONS
