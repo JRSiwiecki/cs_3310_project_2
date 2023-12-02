@@ -1,9 +1,10 @@
 from algorithms.merge_sort import kth_smallest_merge_sort
 
-test = [4, 3, 6, 1, 9, 10, 2, 5]
-low = 0
-high = len(test)
+k = 1
+array = [4, 3, 6, 1, 9, 10, 2, 5]
 
-kth_smallest_merge_sort(low, high, test)
+print(array)
 
-print(test)
+array = kth_smallest_merge_sort(k, array)
+
+print(array)
